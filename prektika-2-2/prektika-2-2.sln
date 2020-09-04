@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prektika-2-2", "prektika-2-2.csproj", "{CAF742D0-CB44-4BD3-B766-268DC381B5BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAF742D0-CB44-4BD3-B766-268DC381B5BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF742D0-CB44-4BD3-B766-268DC381B5BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF742D0-CB44-4BD3-B766-268DC381B5BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF742D0-CB44-4BD3-B766-268DC381B5BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0FB5187-623A-4989-86C9-F7F1277DC1C4}
+	EndGlobalSection
+EndGlobal
