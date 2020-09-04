@@ -29,7 +29,7 @@ namespace ViewFile
             {
               TextReader tr = new StreamReader(locationTextBox.Text); 
               try
-              { displayTextBox.Text = tr.ReadToEndO; }
+              { displayTextBox.Text = tr.ReadToEnd(); }
               catch (Exception ex)
               { MessageBox.Show(ex.Message); }
               finally
