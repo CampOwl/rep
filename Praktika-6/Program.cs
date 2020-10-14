@@ -17,7 +17,7 @@ namespace Praktika_6
     {
       fam = "nobody";
       name = "nobody";
-      date = new DateTime(0, 0, 0);
+      date = new DateTime(2001, 1, 1);
     }
     public string Name
     {
@@ -41,7 +41,7 @@ namespace Praktika_6
     }
     public override string ToString()
     {
-      return fam + " " + name + " was born on " + date.ToString();
+      return fam + " " + name + " was born on " + date.ToShortDateString();
     }
     public virtual string ToShortString()
     {
@@ -65,11 +65,11 @@ namespace Praktika_6
     {
       NameOfSub = " ";
       Mark = 0;
-      DateOfExam = new DateTime(0,0,0);
+      DateOfExam = new DateTime(2000,1,1);
     }
     public override string ToString()
     {
-      return NameOfSub + ": " + Mark + " date: " + DateOfExam.ToString();
+      return NameOfSub + ": " + Mark + " date: " + DateOfExam.ToShortDateString();
     }
   }
   enum Education: int { Specialist, Вachelor, SecondEducation };
@@ -111,11 +111,14 @@ namespace Praktika_6
     {
       get { return Exams; }
       set {
-        int i = 0;
-        foreach (Exam _exam in value)
-        {
-          exams[i++] = _exam;
-        }
+        if (Exams.Count != 0)
+                {
+                    Exams.Clear();
+                }
+        foreach(Exam _exam in value)
+                {
+                    Exams.Add(_exam);
+                }
       }
     } 
     
@@ -134,7 +137,15 @@ namespace Praktika_6
       }
     }
     //индексатор булевского типа????
-    public void AddExams(params Exam[] list)
+    public bool this[Education forma]
+        {
+            get
+            {
+                return forma==form;
+            }
+        }
+
+    public void AddExams(List<Exam> list)
     {
       foreach(Exam _element in list)
       {
@@ -150,11 +161,11 @@ namespace Praktika_6
         i++;
         str =str + i + ". "  + _exam.ToString() + "\n";
       }
-      return DataOfStudent.ToString() + "\n" + Form + "\n" + Group + "\n" + str;
+      return DataOfStudent.ToString() + "\nform of education: " + Form + "\ngroup: " + Group + "\n" + str;
     }
     public virtual string ToShortString()
     {
-      return DataOfStudent.ToString() + "\n" + Form + "\n" + Group + "\n" + "middle mark: " + MidMark;
+      return DataOfStudent.ToString() + "\nform of education: " + Form + "\ngroup: " + Group + "\n" + "middle mark: " + MidMark;
     }
   }
 
@@ -163,7 +174,28 @@ namespace Praktika_6
     
     static void Main(string[] args)
     {
-      Console.WriteLine("Hello World!");
-    }
+            Student stud=new Student();
+            Console.WriteLine(stud.ToShortString());
+            Console.WriteLine(stud[Education.Specialist]);
+            Console.WriteLine(stud[Education.Вachelor]);
+            Console.WriteLine(stud[Education.SecondEducation]);
+            var date = new DateTime(2000,11, 7);
+            stud.data=new Person("black","Tom",date);
+            stud.form = Education.Вachelor;
+            stud.group = 5;
+            var date1 = new DateTime(2020, 6, 4);
+            var date2 = new DateTime(2020, 6, 17);
+            List<Exam> exams1 = new List<Exam>();
+            exams1.Add(new Exam("algebra", 5, date1));
+            exams1.Add(new Exam("geometry", 4, date2));
+            stud.exams=exams1;
+            Console.WriteLine(stud.ToString());
+            List<Exam> exams2 = new List<Exam>();
+            var date3 = new DateTime(2020, 6, 23);
+            exams2.Add(new Exam("history", 3, date3));
+            stud.AddExams(exams2);
+            Console.WriteLine(stud.ToString());
+           
+        }
   }
 }
