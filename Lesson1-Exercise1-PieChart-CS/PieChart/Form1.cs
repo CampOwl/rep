@@ -38,44 +38,44 @@ namespace PieChart
         {
           Bitmap bm = new Bitmap(s.Width, s.Height);
           Graphics g = Graphics.FromImage(bm);
-      float total = 0;
+          float total = 0;
 
-      foreach (PieChartElement e in elements)
-      {
-        if (e.value < 0)
-        {
-          throw new ArgumentException("All elements must have positive values");
-        }
-        total += e.value;
-      }
+          foreach (PieChartElement e in elements)
+          {
+            if (e.value < 0)
+            {
+              throw new ArgumentException("All elements must have positive values");
+            }
+            total += e.value;
+          }
 
-      if (!(total > 0))
-      {
-        throw new ArgumentException("Must provide at least one PieChartElement with a positive value");
-      }
+          if (!(total > 0))
+          {
+            throw new ArgumentException("Must provide at least one PieChartElement with a positive value");
+          }
 
-      // Define the rectangle that the pie chart will use
-      Rectangle rect = new Rectangle(1, 1, s.Width - 2, s.Height - 2);
+          // Define the rectangle that the pie chart will use
+          Rectangle rect = new Rectangle(1, 1, s.Width - 2, s.Height - 2);
 
-      Pen p = new Pen(Color.Black, 1);
+          Pen p = new Pen(Color.Black, 1);
 
-      // Draw the first section at 0 degrees
-      float startAngle = 0;
+          // Draw the first section at 0 degrees
+          float startAngle = 0;
 
-      // Draw each of the pie shapes
-      foreach (PieChartElement e in elements)
-      {
-        // Calculate the degrees that this section will consume,
-        // based on the percentage of the total
-        float sweepAngle = (e.value / total) * 360;
+          // Draw each of the pie shapes
+          foreach (PieChartElement e in elements)
+          {
+            // Calculate the degrees that this section will consume,
+            // based on the percentage of the total
+            float sweepAngle = (e.value / total) * 360;
 
-        // Draw the pie shape
-        g.DrawPie(p, rect, startAngle, sweepAngle);
+            // Draw the pie shape
+            g.DrawPie(p, rect, startAngle, sweepAngle);
 
-        // Calculate the angle for the next pie shape by adding
-        // the current shape's degrees to the previous total.
-        startAngle += sweepAngle;
-      }
+            // Calculate the angle for the next pie shape by adding
+            // the current shape's degrees to the previous total.
+            startAngle += sweepAngle;
+          }
       return bm;
 
         }
