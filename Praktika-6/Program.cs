@@ -34,7 +34,7 @@ namespace Praktika_6
       get { return date;}
       set {date = value;}
     }
-    public int Year//как изменить дэйттайм год??
+    public int Year
     {
       get { return date.Year; }
       set {  }
@@ -194,7 +194,7 @@ namespace Praktika_6
             var date3 = new DateTime(2020, 6, 23);
             exams2.Add(new Exam("history", 3, date3));
             stud.AddExams(exams2);
-            Console.WriteLine(stud.ToString());
+            Console.WriteLine(stud.ToShortString());
            
         }
   }
