@@ -136,7 +136,7 @@ namespace Praktika_6
         return midmark/i;
       }
     }
-    //индексатор булевского типа????
+    
     public bool this[Education forma]
         {
             get
